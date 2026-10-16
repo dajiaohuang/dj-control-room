@@ -275,7 +275,8 @@ def _has_foreign_distribution(panel):
     panel_dists = (
         {package_dist}
         if package_dist in installed_dists
-        else _distributions_for_package(
+        else _distributions_for_package(package)
+        or _distributions_for_package(
             getattr(panel, "app_name", None)
             or getattr(panel, "_registry_id", None)
         )
